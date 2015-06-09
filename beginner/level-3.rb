@@ -6,7 +6,8 @@ class Player
     @space   = warrior.feel
     @health  = warrior.health
     
-    wat_do
+    # wat_do determines what the appropriate action is for our warrior
+    warrior.send wat_do
   end
   
   def wat_do
@@ -14,6 +15,6 @@ class Player
     action = :rest!   if health < 20
     action = :attack! unless space.empty?
 
-    warrior.send action
+    action
   end
 end 
