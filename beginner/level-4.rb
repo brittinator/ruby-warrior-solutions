@@ -7,12 +7,14 @@ class Player
     @health_then = health_now || 20
     @health_now  = warrior.health
     
-    warrior.send wat_do
+    warrior.send wat_do # <==  one command for every action
+      # send is a method that every class object responds to
   end
   
   def wat_do
-    action = :walk!
-    action = :rest!   unless unhurt? || ouch?
+    # order of priority
+    action = :walk! # lowest priority, do this unless you can dom something else
+    action = :rest!   unless unhurt? || taking_dmg? # rest unless you're full of health or taking dmg
     action = :attack! unless space.empty?
 
     action
@@ -24,7 +26,7 @@ class Player
     health_now >= 20
   end
   
-  def ouch?
+  def taking_dmg?
     health_now < health_then
   end
 end
