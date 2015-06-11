@@ -8,7 +8,8 @@ class Player
     @health_now  = warrior.health
     
     warrior.send wat_do # <==  one command for every action
-      # send is a method that every class object responds to
+    # warrior is the method for warrior made in the attr_reader
+    # send is a method that every class object responds to
   end
   
   def wat_do
